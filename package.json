@@ -1,0 +1,29 @@
+{
+  "name": "e-ccom",
+  "version": "1.0.0",
+  "description": "this is e-ccom app with rest api",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js",
+    "client": "npm run dev --prefix ./client",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "colors": "^1.4.0",
+    "concurrently": "^8.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-formidable": "^1.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.3.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22",
+    "slugify": "^1.6.6"
+  }
+}
