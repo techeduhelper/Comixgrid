@@ -7,7 +7,8 @@ import authRoute from "./routes/authRoute.js";
 import categoryRoutes from './routes/categoryRoutes.js'
 import cors from 'cors';
 import productRoute from './routes/productRoute.js'
-import path from 'path'
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
 
 // configure env (4th step)
@@ -26,10 +27,15 @@ app.use(morgan('dev'));
 
 
 // static files
-app.use(express.static(path.join(__dirname, './client/dist')))
+// Serve static files from the 'client/dist' directory
+const distDir = join(dirname(fileURLToPath(import.meta.url)), './client/dist');
+app.use(express.static(distDir));
+
+// Catch-all route to serve the SPA's index.html
 app.get('*', function (req, res) {
-    return res.sendFile(path.join('./client/dist/index.html'))
-})
+    return res.sendFile(join(distDir, 'index.html'));
+});
+
 
 // routes
 app.use('/api/v1/auth', authRoute);
